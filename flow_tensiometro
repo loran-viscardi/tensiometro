@@ -1,0 +1,2535 @@
+[
+    {
+        "id": "2b0662ebd4b08307",
+        "type": "tab",
+        "label": "Flow_TCC_Tensiometro",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e6740623.b934e8",
+        "type": "tab",
+        "label": "API_OpenWeather",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9787bcbfcbd32ff9",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "9456896c3e1b4c0b",
+        "type": "ui_base",
+        "z": "2b0662ebd4b08307",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#212121",
+                "baseFont": "Georgia,Georgia,serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#212121",
+                "baseFont": "Georgia,Georgia,serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Tema_Controle_Tanque",
+                "default": "#4B7930",
+                "baseColor": "#ffffff",
+                "baseFont": "Georgia,Georgia,serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#ffffff",
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#545454",
+                    "edited": true
+                },
+                "page-backgroundColor": {
+                    "value": "#525252",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#bfbfbf",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#2b2b2b",
+                    "edited": true
+                },
+                "group-backgroundColor": {
+                    "value": "#bababa",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#ff6161",
+                    "edited": true
+                },
+                "widget-borderColor": {
+                    "value": "#666666",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "Georgia,Georgia,serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "purple",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Tensiômetro",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "icon",
+            "allowTempTheme": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 20,
+                "gy": 20,
+                "cx": 12,
+                "cy": 12,
+                "px": 6,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "938316eab6c61a55",
+        "type": "mqtt-broker",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "broker": "loranviscardi.duckdns.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "14e9b2a51730b487",
+        "type": "ui_group",
+        "z": "2b0662ebd4b08307",
+        "name": "Gráficos",
+        "tab": "3046f6ea24ac700b",
+        "order": 2,
+        "disp": false,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a139738a6814e2a9",
+        "type": "ui_group",
+        "z": "2b0662ebd4b08307",
+        "name": "Sensor",
+        "tab": "3046f6ea24ac700b",
+        "order": 1,
+        "disp": false,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3046f6ea24ac700b",
+        "type": "ui_tab",
+        "z": "2b0662ebd4b08307",
+        "name": "▌Controle de Irrigação ▬ Tensiômetro 01 ▌",
+        "icon": "fa-tachometer",
+        "order": 3,
+        "disabled": false,
+        "hidden": false,
+        "info": "body {\r\n  background-color: #f1f1f1; /* Substitua pela cor desejada */\r\n}\r\n"
+    },
+    {
+        "id": "d00fc8842f489ac4",
+        "type": "MySQLdatabase",
+        "z": "2b0662ebd4b08307",
+        "name": "Loran_DB",
+        "host": "data-base-loran.cmrb6dtspj1m.us-east-1.rds.amazonaws.com",
+        "port": "3306",
+        "db": "tensiometro",
+        "tz": "21:09",
+        "charset": "UTF8"
+    },
+    {
+        "id": "9db6522d19a9cb7e",
+        "type": "ui_tab",
+        "z": "2b0662ebd4b08307",
+        "name": "Clima",
+        "icon": "wi-wu-chancerain",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "18d2ceef143b90bd",
+        "type": "ui_tab",
+        "z": "2b0662ebd4b08307",
+        "name": "Tabela Data Base",
+        "icon": "fa-database ",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "14a6b45.c14044c",
+        "type": "ui_group",
+        "name": "Currently",
+        "tab": "15aade36.6f99e2",
+        "order": 1,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "afe05275.58d41",
+        "type": "ui_group",
+        "name": "Wind",
+        "tab": "15aade36.6f99e2",
+        "order": 3,
+        "disp": true,
+        "width": "3",
+        "collapse": false
+    },
+    {
+        "id": "8e91688a.1a1588",
+        "type": "ui_group",
+        "name": "Berlin",
+        "tab": "15aade36.6f99e2",
+        "order": 2,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "b363e4ec.0c1bb8",
+        "type": "ui_group",
+        "name": "Daylight",
+        "tab": "15aade36.6f99e2",
+        "order": 4,
+        "disp": true,
+        "width": "3",
+        "collapse": false
+    },
+    {
+        "id": "2c3113b6.ecfa0c",
+        "type": "ui_group",
+        "name": "Weekly Forecast",
+        "tab": "15aade36.6f99e2",
+        "order": 5,
+        "disp": true,
+        "width": "14",
+        "collapse": false
+    },
+    {
+        "id": "15aade36.6f99e2",
+        "type": "ui_tab",
+        "name": "Berlin Weather Forecast",
+        "icon": "",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c2b70b0fcb50f7b6",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "loranviscardi.duckdns.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f02afe741b6f8102",
+        "type": "ui_tab",
+        "name": "Clima(Flow_API_Clima)",
+        "icon": "wi-wu-chancerain",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "bf61dfe3fe574ede",
+        "type": "ui_group",
+        "name": "Clima — Itajobi - SP",
+        "tab": "f02afe741b6f8102",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2ff05f98eef7bcf4",
+        "type": "ui_tab",
+        "name": "Tabela Data Base (Flow_DataBase)",
+        "icon": "fa-database ",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ba89b7810bae9401",
+        "type": "ui_group",
+        "name": "Tabela — Database",
+        "tab": "2ff05f98eef7bcf4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d47bc33727eec02a",
+        "type": "ui_group",
+        "name": "Gráfico — DataBase",
+        "tab": "2ff05f98eef7bcf4",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "36c9396db540d7ba",
+        "type": "mqtt in",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "topic": "Leitura_ESP32_Sensores",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "938316eab6c61a55",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 250,
+        "y": 900,
+        "wires": [
+            [
+                "1ac4f9a7c4da36f5"
+            ]
+        ]
+    },
+    {
+        "id": "1ac4f9a7c4da36f5",
+        "type": "json",
+        "z": "2b0662ebd4b08307",
+        "name": "converter",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 460,
+        "y": 900,
+        "wires": [
+            [
+                "486c044d68a7ad05",
+                "eaa44b055986a067"
+            ]
+        ]
+    },
+    {
+        "id": "486c044d68a7ad05",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "separa_campos",
+        "func": "var analogicoPressao = { payload: msg.payload.analogicoPressao };\n\n\nglobal.set(\"analogicoPressao\", msg.payload.analogicoPressao);\n\n\nreturn [analogicoPressao];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 900,
+        "wires": [
+            [
+                "d1c90c58917b4e3d",
+                "d43c6ec397e9a5a6",
+                "dd688cdce59e8a90",
+                "90f40f88589ea375",
+                "f9152018009f7f01",
+                "daf02fc33bbc239d"
+            ]
+        ]
+    },
+    {
+        "id": "d1c90c58917b4e3d",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "Pressão no Solo",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6ca414512f5d4aaa",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "ENTRADA LEITURA DO SENSOR",
+        "info": "POR ESSE NODE É RECEBIDO OS VALORES ENVIADOS PELOS SENSORES FÍSICOS\nENVIADOS ATRAVÉS DO ESP32, POR UM BROKER MQTT",
+        "x": 200,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "eaa44b055986a067",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "debug 42",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f20c8620c711bd1e",
+        "type": "mqtt out",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "topic": "Led/IndicaTanque",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "938316eab6c61a55",
+        "x": 1550,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "f9152018009f7f01",
+        "type": "switch",
+        "z": "2b0662ebd4b08307",
+        "name": "separa.analogico",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 970,
+        "y": 880,
+        "wires": [
+            [
+                "77314b1b707c6c9a",
+                "595fdf040f98e6d6"
+            ]
+        ]
+    },
+    {
+        "id": "77314b1b707c6c9a",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "onEtanol",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 880,
+        "wires": [
+            [
+                "f20c8620c711bd1e"
+            ]
+        ]
+    },
+    {
+        "id": "02fd0ce8892c2172",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "payload",
+                "fromt": "msg",
+                "to": "offEtanol",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 960,
+        "wires": [
+            [
+                "f20c8620c711bd1e"
+            ]
+        ]
+    },
+    {
+        "id": "daf02fc33bbc239d",
+        "type": "switch",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1010,
+        "y": 960,
+        "wires": [
+            [
+                "02fd0ce8892c2172",
+                "d9645828fac7b447"
+            ]
+        ]
+    },
+    {
+        "id": "8780e4420d7e6df9",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "LEDS TANQUE VAZIO",
+        "info": "",
+        "x": 1720,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "25093d7febd9b057",
+        "type": "ui_toast",
+        "z": "2b0662ebd4b08307",
+        "d": true,
+        "position": "bottom left",
+        "displayTime": "5",
+        "highlight": "red",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "LIGAR",
+        "name": "",
+        "x": 1490,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "7dc74057cac38cf2",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "Ligar Irrigação",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d43c6ec397e9a5a6",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "mostra_pop-up",
+        "func": "\nif (msg.payload < 11) {\n    msg.payload = 1;\n}\n\nif (msg.payload >= 33){\n    msg.payload = 2;\n}\n\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nif ((msg.payload <= 3000)) {\n    msg.payload = \"Combustível Acabando\";\n}\n\nreturn [msg];",
+        "libs": [],
+        "x": 900,
+        "y": 1040,
+        "wires": [
+            [
+                "1fe2c23ab371ef9c"
+            ]
+        ]
+    },
+    {
+        "id": "1fe2c23ab371ef9c",
+        "type": "switch",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1070,
+        "y": 1040,
+        "wires": [
+            [
+                "7dc74057cac38cf2"
+            ],
+            [
+                "7dc9048bbbb8480b"
+            ]
+        ]
+    },
+    {
+        "id": "7dc9048bbbb8480b",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "2",
+                "fromt": "num",
+                "to": "Desligar Irrigação",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "01ded6b1acbfc099",
+        "type": "ui_toast",
+        "z": "2b0662ebd4b08307",
+        "d": true,
+        "position": "bottom left",
+        "displayTime": "3",
+        "highlight": "green",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "Tanque Etanol",
+        "name": "Parar Irrigação",
+        "x": 1480,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "595fdf040f98e6d6",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9645828fac7b447",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "payload",
+                "fromt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a192669febd7eeab",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "CONVERTE JSON EM STRING",
+        "info": "",
+        "x": 570,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "dd688cdce59e8a90",
+        "type": "ui_chart",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "group": "14e9b2a51730b487",
+        "order": 1,
+        "width": 12,
+        "height": 8,
+        "label": " Gráfico ▬ Pressão no Solo ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#8cc63c",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "ui_chart",
+        "x": 940,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "786612b24b051285",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "AQUISIÇÃO DOS DADOS",
+        "info": "",
+        "x": 1070,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "8da4087752ab9f6c",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "a139738a6814e2a9",
+        "name": "CSS — Vacuômetro",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style id=\"hotNipi-gauge\">\n:root{\n    --needle-color:#001100; // COR DO PONTEIRO \n    --needle-second-color:#ff0000; // COR DO SEGUNDO PONTEIRO\n    --red-ticks:9;\n    --sec-high-color:#ff00004f;\n    --sec-normal-color:#ffff2e;\n    --sec-low-color:#00ff004f;\n    --sec-sub-color:#0000ff4f; \n}\n\n.g-container {\n    padding-top: 3px;\n    padding-bottom: 3px;\n    width: 100%; \n    height: 100%;\n    position: relative;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    user-select:none;\n}\n    \n.g-body {\n    width: 98%;\n    height: 98%;\n    border-radius: 50%;\n    position: relative;\n    display: flex;\n    align-content: center;\n    align-items: center;\n    justify-content: center;\n    box-shadow: 0px 5px 8px #00000045;\n    background: linear-gradient(0deg, rgba(78,78,78,1) 0%, rgba(215,215,215,1) 99%, rgba(236,236,236,1) 100%);\n}\n\n/*.g-body::before {    \n    content: \"\";\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==\"); \n    background-repeat: repeat;\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    bottom: 0px;\n    left: 0px;\n    opacity: 0.1;\n    border-radius:10%;\n}*/\n\n.g-sector{\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n   \n    transform-origin: 0 0;\n}\n\n.g-sector-high {\n    background: var(--sec-high-color);\n    transform: rotate(324deg) skew(9deg, 0deg);\n\n}\n.g-sector-normal {\n    background:var(--sec-normal-color);\n    transform: rotate(243deg) skew(9deg, 0deg);\n\n}\n.g-sector-low {\n    background:var(--sec-low-color);\n    transform: rotate(162deg) skew(9deg, 0deg);\n\n}\n.g-sector-sub {\n   background:var(--sec-sub-color);\n   transform: rotate(136deg) skew(64deg, -1deg);\n} \n\n.circulo {\nposition: relative;\ntop: 7.25%;\nleft: 7.25%;\nwidth:85%;\nheight:85%;\nborder-radius:50%;\n/*background: radial-gradient(circle, #dd8400 3%, rgb(196 205 209) 1%, rgb(177 183 186) 40%, rgb(191 193 194) 100%);*/\nbackground: radial-gradient(circle, #dd8400 3%, rgb(200 200 200) 1%, rgb(235 235 235) 40%, rgb(255 255 255) 100%);\n}\n\n.g-ring {\n    width: 92%;\n    height: 92%;\n    border-radius: 50%;\n    position: relative;\n    display: flex;\n    align-content: center;\n    align-items: center;\n    justify-content: center;\n    background: linear-gradient(180deg, rgba(78,78,78,1) 0%, rgba(215,215,215,1) 99%, rgba(236,236,236,1) 100%);\n}\n.g-plate {\n    overflow: hidden;\n    width: 93%;\n    height: 93%;\n    border-radius: 50%;\n    position: relative;\n    box-shadow: inset 0 0 15px #000000a3;\n    background: radial-gradient(circle, #dd8400 3%, rgb(200 200 200) 1%, rgb(235 235 235) 40%, rgb(255 255 255) 100%);\n}\n.g-plate-bright {\n    overflow:hidden;\n    width: 90%;\n    height: 90%;\n    border-radius: 50%;\n    position: relative;\n    box-shadow: inset 0 0 10px yellow;\n    background: radial-gradient(circle, #ed9400 3%, rgb(255, 255, 255) 1%, rgb(255, 255, 158) 40%, rgb(148, 154, 160) 100%);\n}\n\n\n.g-ticks {\n    position: absolute;\n    top:0;\n    left:0;\n    width: 100%;\n    height: 100%;\n    filter: drop-shadow(2px 4px 6px black);\n}\n.g-tick {\n    transform: rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-tick-count)) + 45deg)));\n    background: #000000;\n    position: relative;\n    left: 0;\n    top: 50%;\n    width: 100%;\n    height: 1px;\n    margin-bottom: -1px;\n    background: linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2%,rgb(0 0 0 / 60%) 2%,rgb(0 0 0 / 60%) 10%,rgba(0,0,0,0) 10%);\n}\n.g-subtick {\n    transform: rotate(calc(calc(270deg / var(--ga-subtick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-subtick-count)) + 45deg)));\n    background: #000000;\n    position: relative;\n    left: 0;\n    top: 50%;\n    width: 100%;\n    height: 1px;\n    margin-bottom: -1px;\n    background: linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2%,rgb(0 0 0 / 40%) 2%,rgb(0 0 0 / 40%) 6%,rgba(0,0,0,0) 6%);\n}\n\n.g-num {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    text-align: center;\n    transform: translate(-50%, -50%) rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(270deg /\n    var(--ga-tick-count)) + 45deg))) translate(calc(-1px * var(--container-size) * var(--gn-distance))) rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) *-1 -\n    calc(calc(270deg / var(--ga-tick-count))*-1 - 45deg)));\n}\n\n.g-nums {\n    position: absolute;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    color: #000000a1;\n    font-size: calc(var(--container-size) * 20%);\n    font-weight: 500;\n    filter: drop-shadow(2px 4px 10px black);\n}\n.g-needle {\n    transform: rotate(calc(270deg * calc(var(--gauge-value, 0deg) / 100) - 45deg));\n    transition: transform 1s;\n    background: #000;\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 2%;\n    filter:drop-shadow(10px 3px 3px #00000080);\n    background: linear-gradient(90deg,rgba(2,0,36,0) 0,rgba(0,0,0,0) 15%,var(--needle-color) 15%,var(--needle-color) 50%,rgba(0,0,0,0) 50%);\n}\n.g-needle-second {\n    transform: rotate(calc(270deg * calc(var(--gauge-value-second, 0deg) / 100) - 45deg));\n    transition: transform 1s;\n    background: #000;\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 2%;\n    filter:drop-shadow(0px 1px 3px #ff000080);  \n    background: linear-gradient(90deg,rgba(2,0,36,0) 0,rgba(0,0,0,0) 15%,var(--needle-second-color) 15%,var(--needle-second-color) 50%,rgba(0,0,0,0) 50%);\n}\n.g-needle-ring {\n    position: absolute;\n    width: calc(var(--container-size) * 1.5%);\n    height: calc(var(--container-size) * 1.5%);\n    top: 50%;\n    left: 50%;\n    background: var(--needle-color);\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n    box-shadow: 10 3px 0px #0000009c;\n}\n.g-val{\n    position: absolute;\n    text-align: center;\n    left: 50%;\n    bottom: 17%;\n    width: 80px;\n    transform: translateX(-50%);\n    font-family: monospace;\n    font-size:  calc(var(--container-size) * 40%);\n    color: #000000a1;\n    filter: drop-shadow(2px 3px 2px #00000050);\n}\n\n.g-label{\n    position: absolute;\n    text-align: center;\n    left: 50%;\n    top: 58%;\n    width: 100%;\n    transform: translateX(-50%);\n    font-family: monospace;\n    font-size:  calc(var(--container-size) * 18%);\n    color: #000000a1;\n    filter: drop-shadow(2px 3px 2px #00000080);\n}\n.g-label::after{\n    content: var(--g-unit);\n    font-size: clamp(1em,calc(var(--container-size) * 40%),1.5em);\n    position: absolute;\n    left: 0;\n    /*top: 100%;*/\n    top: 70px;\n    width: 100%;\n    height: 100%;\n}\n\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 780,
+        "wires": [
+            [
+                "90f40f88589ea375"
+            ]
+        ]
+    },
+    {
+        "id": "2cc22929a47b82b3",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "a139738a6814e2a9",
+        "name": "CSS Vacuômetro",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n\n    /*Main background*/\n    body {\n        background: -webkit-linear-gradient(\n            55deg,\n            #3b3b3b 0%,\n            #6e6e6e 50%,\n            #7d7d7d 100%\n            );\n    }\n\n    /*Top bar*/\n    body.nr-dashboard-theme md-toolbar,\n    body.nr-dashboard-theme md-content md-card {\n        background-color: transparent !important;\n        color: cornsilk !important;\n    }\n\n\n    /*Left menu*/\n    /*Sidebar*/\n    body.nr-dashboard-theme md-sidenav {\n        color: cornsilk !important;\n        background-color: rgba(0,0,0,0) !important;\n    }\n    /*Hover selection*/\n    a.md-no-style, button.md-no-style {\n        border-radius: 10px !important;\n    }\n    /*Selected*/\n    .nr-menu-item-active div button {\n        border-right: 4px solid rgba(0 255 0 0.5) !important;\n    }\n    /*List*/\n    body.nr-dashboard-theme md-sidenav div.md-list-item-inner {\n        color: white !important;\n        background-color: rgba(40,85,165,1) !important;\n        border-radius: 10px !important;\n    }\n\n\n    /*Groups*/\n    ui-card-panel {\n        //background-color: rgba(255,255,255,0.1) !important;\n        background-color: transparent !important;\n        border-radius: 10px !important;\n    }\n    .nr-dashboard-theme ui-card-panel {\n        border: none !important;\n    }\n    /*Name groups*/\n    .nr-dashboard-theme ui-card-panel p.nr-dashboard-cardtitle {\n        color: rgba(255, 255, 255, 0.5) !important;\n    }\n\n\n    /*Bouttons*/\n   /* .nr-dashboard-theme .nr-dashboard-button .md-button {\n        background-color: rgba(255,255,255,.1) !important;\n    }\n    .md-button {\n        border-radius: 10px !important;\n    }*/\n\n\n    /*Dropdown menu*/\n/*    .nr-dashboard-theme md-select-menu{\n        background-color: rgba(0,0,0,1) !important;\n    }\n    .nr-dashboard-theme md-select-menu, .nr-dashboard-theme md-select-menu md-option {\n        background-color: transparent !important;\n    }\n    .nr-dashboard-theme .md-select-menu-container {\n        border-radius: 10px !important;\n        border: none !important;\n    }\n    .nr-dashboard-theme md-select-menu md-option[selected] {\n        color: black !important;\n        background-color: #3d3d3d !important;\n    }*/\n\n    /*Template*/\n    md-card>img, md-card>md-card-header img, md-card md-card-title-media img {\n        border-radius: 10px !important;\n    }\n\n    /* Color picker text BG */\n    .nr-dashboard-theme .color-picker-input-wrapper > input {\n        color: white !important;\n        background-color: transparent !important;\n    }\n\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1620,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "90f40f88589ea375",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "a139738a6814e2a9",
+        "name": "Vacuômetro",
+        "order": 4,
+        "width": 6,
+        "height": 6,
+        "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\"\n    style=\"--gauge-value:10; --container-size:6; --gn-distance:17; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'kPa'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-sector g-sector-sub\"></div>\n                <div class=\"g-sector g-sector-low\"></div>\n                <div class=\"g-sector g-sector-normal\"></div>\n                <div class=\"g-sector g-sector-high\"></div>\n                <div class=\"circulo\"></div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n\n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n                <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\">0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Pressão</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n    (function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 990,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06977c080c0d5cd9",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "a139738a6814e2a9",
+        "name": "CSS - Página Completa",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    /*Dropdown menu*/\n    .nr-dashboard-theme md-select-menu{\n    background-color: rgba(0,0,0,1) !important;\n    }\n    .nr-dashboard-theme md-select-menu, .nr-dashboard-theme md-select-menu md-option {\n    background-color: transparent !important;\n    }\n    .nr-dashboard-theme .md-select-menu-container {\n    border-radius: 10px !important;\n    border: none !important;\n    }\n    .nr-dashboard-theme md-select-menu md-option[selected] {\n    color: black !important;\n    background-color: #3d3d3d !important;\n    }\n\n        /*Bouttons*/\n        .nr-dashboard-theme .nr-dashboard-button .md-button {\n        background-color: rgba(255,255,255,.1) !important;\n        }\n        .md-button {\n        border-radius: 10px !important;\n        }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 1610,
+        "y": 730,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b189be426fc4431f",
+        "type": "mysql",
+        "z": "2b0662ebd4b08307",
+        "mydb": "d00fc8842f489ac4",
+        "name": "conexao_mysql",
+        "x": 590,
+        "y": 970,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0fb36710d713ba5b",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "Resultado Inserção",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 1290,
+        "wires": []
+    },
+    {
+        "id": "afc636c95482c2b0",
+        "type": "inject",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 1310,
+        "wires": [
+            [
+                "5f19e984aab48e52"
+            ]
+        ]
+    },
+    {
+        "id": "5f19e984aab48e52",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "INSERT",
+        "func": "var analogicoPressao = global.get(\"analogicoPressao\");\n\n\nmsg.topic = \"INSERT INTO dados_tensiometro (pressao_tensiometro, horario_insercao) VALUES (\" + analogicoPressao + \", CURRENT_TIMESTAMP);\"\n\nreturn msg;\n\n\n/*var analogicoEtanol = global.get(\"analogicoEtanol\");\n\n\nmsg.topic = \"INSERT INTO nivel (etanol, horario_insercao) VALUES (\" + analogicoEtanol + \",CURRENT_TIMESTAMP);\"\n\nreturn msg;*/",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1310,
+        "wires": [
+            [
+                "093696d655ffa80b",
+                "c96659cea708c807"
+            ]
+        ]
+    },
+    {
+        "id": "c96659cea708c807",
+        "type": "mysql",
+        "z": "2b0662ebd4b08307",
+        "mydb": "d00fc8842f489ac4",
+        "name": "conexao_mysql",
+        "x": 730,
+        "y": 1310,
+        "wires": [
+            [
+                "0fb36710d713ba5b"
+            ]
+        ]
+    },
+    {
+        "id": "e1377c16c92385c8",
+        "type": "inject",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 1390,
+        "wires": [
+            [
+                "8ba90accc6e42777"
+            ]
+        ]
+    },
+    {
+        "id": "8ba90accc6e42777",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "SELECT",
+        "func": "//msg.topic = \"SELECT niveltanque as Nível, horario_insercao as Horário FROM nivel where horario_insercao >= now() - 84600;\"\nmsg.topic = \"SELECT pressao_tensiometro as Pressão, horario_insercao as Horario FROM dados_tensiometro where horario_insercao >= now() - 84600;\"\nreturn msg;\n\n//msg.topic = \"SELECT * FROM tempLog where timeStamp >= now() - 84600;\"\n\n//msg.topic = \"SELECT temperature as temperatura, humidity as humidade, timeStamp FROM tempLog where timeStamp >= now() - 84600;\"\n\n//msg.topic = \"INSERT INTO tempLog (temperature,humidity) VALUES (\"+temperatura+\",\"+humidade+\" );\"\n\n//SELECT MAX(\"producaocatanduva\") as producao, time FROM \"Solar_IFSP\"  WHERE time >= now() - 30d GROUP BY time(1d)\n\n//SELECT sala as sala, cozinha as cozinha, quarto as quarto, timeStamp as timeStamp FROM tempLog where timeStamp >= now() - 84600;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 1390,
+        "wires": [
+            [
+                "1c96670e92376fc7",
+                "9003d2e86614b4db"
+            ]
+        ]
+    },
+    {
+        "id": "1c96670e92376fc7",
+        "type": "mysql",
+        "z": "2b0662ebd4b08307",
+        "mydb": "d00fc8842f489ac4",
+        "name": "conexao_mysql",
+        "x": 710,
+        "y": 1390,
+        "wires": [
+            [
+                "e007308b421985b0",
+                "20c9d28efbdcfdf2"
+            ]
+        ]
+    },
+    {
+        "id": "aefa88e6f439eee3",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "Mysql: Select últimos 50 dados para grafico",
+        "info": "",
+        "x": 460,
+        "y": 1350,
+        "wires": []
+    },
+    {
+        "id": "20c9d28efbdcfdf2",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "Format data",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "(\t  $series := [\t    { \"label\": \"Pressão\", \"field\": \"Pressão\" },\t    { \"label\": \"\", \"field\": \"\" },\t    { \"label\": \"\", \"field\": \"\" }\t  ];\t  $xaxis := \"Horario\";\t  [\t    {\t      \"series\": $series.label,\t      \"data\": $series.[\t        (\t          $yaxis := $.field;\t          $$.payload.{\t            \"x\": $lookup($, $xaxis),\t            \"y\": $lookup($, $yaxis)\t          }\t        )\t      ]\t    }\t  ]\t)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 1390,
+        "wires": [
+            [
+                "2f6cd48a7670cadf",
+                "e2d646417a1fd98e"
+            ]
+        ]
+    },
+    {
+        "id": "4c814443c5be5086",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "Grava numero aleatorio em mysql",
+        "info": "",
+        "x": 440,
+        "y": 1270,
+        "wires": []
+    },
+    {
+        "id": "e007308b421985b0",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "dados mysql",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 1350,
+        "wires": []
+    },
+    {
+        "id": "3f921d38443b53f5",
+        "type": "inject",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 1470,
+        "wires": [
+            [
+                "a21dbbd6324908d9"
+            ]
+        ]
+    },
+    {
+        "id": "a21dbbd6324908d9",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "SELECT",
+        "func": "msg.topic = \"SELECT pressao_tensiometro, horario_insercao FROM dados_tensiometro ORDER BY horario_insercao DESC LIMIT 50;\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 1470,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e92b54e025723f82",
+        "type": "mysql",
+        "z": "2b0662ebd4b08307",
+        "mydb": "d00fc8842f489ac4",
+        "name": "conexao_mysql",
+        "x": 710,
+        "y": 1470,
+        "wires": [
+            [
+                "de0f2156f90e058c"
+            ]
+        ]
+    },
+    {
+        "id": "38515721b5294471",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "Mysql: Select últimos 50 dados para tabela",
+        "info": "",
+        "x": 450,
+        "y": 1430,
+        "wires": []
+    },
+    {
+        "id": "093696d655ffa80b",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1270,
+        "wires": []
+    },
+    {
+        "id": "4651e8df9bfd856c",
+        "type": "mysql",
+        "z": "2b0662ebd4b08307",
+        "mydb": "d00fc8842f489ac4",
+        "name": "conexao_mysql",
+        "x": 710,
+        "y": 1550,
+        "wires": [
+            [
+                "882fb9ec44b326cc"
+            ]
+        ]
+    },
+    {
+        "id": "9d10972cc325b0db",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "DELET",
+        "func": "\nmsg.topic = \"DELETE FROM dados_tensiometro;\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 1550,
+        "wires": [
+            [
+                "4651e8df9bfd856c"
+            ]
+        ]
+    },
+    {
+        "id": "882fb9ec44b326cc",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "dados mysql",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 1550,
+        "wires": []
+    },
+    {
+        "id": "44cd9eae77fc1a8a",
+        "type": "inject",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 1550,
+        "wires": [
+            [
+                "9d10972cc325b0db"
+            ]
+        ]
+    },
+    {
+        "id": "c6b6852878ad594f",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "Mysql: Deleta os dados da tabela",
+        "info": "",
+        "x": 420,
+        "y": 1510,
+        "wires": []
+    },
+    {
+        "id": "555591eec0e5243d",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "BANCO DE DADOS ",
+        "info": "",
+        "x": 800,
+        "y": 1210,
+        "wires": []
+    },
+    {
+        "id": "de0f2156f90e058c",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "ba89b7810bae9401",
+        "name": "Tabela MySQL",
+        "order": 2,
+        "width": "6",
+        "height": 6,
+        "format": "<style>\n  .title {\n    font-size: 1.2em;\n    text-align: center;\n    border-bottom: 5px solid #ccc;\n    padding-bottom: 5px;\n    margin-bottom: 5px;\n    color: white;\n    font-family: georgia;\n    font-weight: bold;\n    position: sticky;\n    top: 0;\n    background-color: #333;\n  }\n\n  .data-row {\n    border-bottom: 1px solid #ccc;\n    padding: 10px;\n    margin: 5px;\n    font-family: \"Arial\", sans-serif;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n\n  .data-row span {\n    flex: 1;\n  }\n</style>\n\n<div layout=\"row\" layout-align=\"start center\">\n  <span flex class=\"title\">Pressão</span>\n  <span flex style=\"text-align: center;\" class=\"title\">Horário</span>\n</div>\n\n<div layout=\"row\" layout-align=\"start center\" ng-repeat=\"row in msg.payload\" class=\"data-row\">\n  <span style=\"color: cornsilk;\">{{row.pressao_tensiometro}} kPa</span>\n  <span style=\"color: cornsilk; text-align: right; font-weight: bold; font-family: 'Arial', sans-serif;\">{{row.horario_insercao | date:'dd/MM/yyyy  HH:mm:ss'}}</span>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 930,
+        "y": 1470,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2d646417a1fd98e",
+        "type": "ui_chart",
+        "z": "2b0662ebd4b08307",
+        "name": "Gráfico 24 horas",
+        "group": "d47bc33727eec02a",
+        "order": 1,
+        "width": "6",
+        "height": "7",
+        "label": "Pressão Tensiômetro",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#8cc63c",
+            "#ed1b24",
+            "#9dfcff",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 1390,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f6cd48a7670cadf",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "debug 50",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 1350,
+        "wires": []
+    },
+    {
+        "id": "9003d2e86614b4db",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "debug 51",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1210,
+        "wires": []
+    },
+    {
+        "id": "23719b26d4af62f9",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "debug 52",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 1490,
+        "wires": []
+    },
+    {
+        "id": "2dd806232455425e",
+        "type": "ui_date_picker",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "label": "Data",
+        "group": "ba89b7810bae9401",
+        "order": 3,
+        "width": "6",
+        "height": 1,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "str",
+        "className": "",
+        "x": 420,
+        "y": 1610,
+        "wires": [
+            [
+                "2b9acd0de88f2c9b"
+            ]
+        ]
+    },
+    {
+        "id": "1d85eeca449d3b9c",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "debug 53",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 1690,
+        "wires": []
+    },
+    {
+        "id": "baec5df2963a75c3",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "SELECT",
+        "func": "/*var formattedDate = msg.payload; // A data formatada da mensagem anterior\n\nif (formattedDate !== \"Data inválida\") {\n    var sqlQuery = \"SELECT * FROM dados_tensiometro WHERE DATE(FROM_UNIXTIME(horario_insercao)) = ?\";\n    msg.sqlQuery = sqlQuery;\n    msg.sqlParams = [formattedDate]; // Array de parâmetros para substituir placeholders\n} else {\n    msg.sqlQuery = null; // Não há consulta em caso de data inválida\n    msg.sqlParams = [];\n}\n\nreturn msg;\n\n*/\n\nvar data_passar = msg.payload;\nmsg.topic = \"SELECT * FROM dados_tensiometro WHERE DATE(horario_insercao) = '\"+data_passar+\"';\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1610,
+        "wires": [
+            [
+                "e92b54e025723f82",
+                "1d85eeca449d3b9c"
+            ]
+        ]
+    },
+    {
+        "id": "2b9acd0de88f2c9b",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "CONVERTE DATA",
+        "func": "var timestamp = parseInt(msg.payload); // Converter o timestamp em um número inteiro\n\nif (!isNaN(timestamp)) {\n    var dateObj = new Date(timestamp);\n    var year = dateObj.getFullYear();\n    var month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Mês começa em 0 (janeiro), por isso é necessário somar 1\n    var day = dateObj.getDate().toString().padStart(2, '0');\n\n    // Formatar para \"YYYY-MM-DD\"\n    var formattedDate = `${year}-${month}-${day}`;\n\n    msg.payload = formattedDate;\n} else {\n    msg.payload = \"Data inválida\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1610,
+        "wires": [
+            [
+                "baec5df2963a75c3"
+            ]
+        ]
+    },
+    {
+        "id": "84e7850d5a3e321f",
+        "type": "inject",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 1610,
+        "wires": [
+            [
+                "2dd806232455425e"
+            ]
+        ]
+    },
+    {
+        "id": "c28bb27e67c8926e",
+        "type": "change",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "(\t  $series := [\t    { \"label\": \"Pressão\", \"field\": \"Pressão\" },\t    { \"label\": \"Gasolina\", \"field\": \"Gasolina\" },\t    { \"label\": \"Diesel\", \"field\": \"Diesel\" }\t  ];\t  $xaxis := \"Horario\";\t  [\t    {\t      \"series\": $series.label,\t      \"data\": $series.[\t        (\t          $yaxis := $.field;\t          $$.payload.{\t            \"x\": $lookup($, $xaxis),\t            \"y\": $lookup($, $yaxis)\t          }\t        )\t      ]\t    }\t  ]\t)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 1590,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80600e73434f25e1",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "ba89b7810bae9401",
+        "name": "CSS DataBase",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n\n    /*Main background*/\n    body {\n        background: -webkit-linear-gradient(\n            55deg,\n            #3d3d3d 0%,\n            #6e6e6e 50%,\n            #7d7d7d 100%\n            );\n    }\n\n    /*Top bar*/\n    body.nr-dashboard-theme md-toolbar,\n    body.nr-dashboard-theme md-content md-card {\n        background-color: transparent !important;\n        color: #FFFFFF !important;\n    }\n\n\n    /*Left menu*/\n    /*Sidebar*/\n    body.nr-dashboard-theme md-sidenav {\n        color: white !important;\n        background-color: rgba(0,0,0,0) !important;\n    }\n    /*Hover selection*/\n    a.md-no-style, button.md-no-style {\n        border-radius: 10px !important;\n    }\n    /*Selected*/\n    .nr-menu-item-active div button {\n        border-right: 4px solid rgb(41 98 255) !important;\n    }\n    /*List*/\n    body.nr-dashboard-theme md-sidenav div.md-list-item-inner {\n        color: white !important;\n        background-color: rgba(40,85,165,1) !important;\n        border-radius: 10px !important;\n    }\n\n\n    /*Groups*/\n    ui-card-panel {\n        background-color: rgba(255,255,255,0.1) !important;\n        border-radius: 10px !important;\n    }\n    .nr-dashboard-theme ui-card-panel {\n        border: none !important;\n    }\n    /*Name groups*/\n    .nr-dashboard-theme ui-card-panel p.nr-dashboard-cardtitle {\n        color: rgba(255, 255, 255, 0.5) !important;\n    }\n\n\n    /*Bouttons*/\n   /* .nr-dashboard-theme .nr-dashboard-button .md-button {\n        background-color: rgba(255,255,255,.1) !important;\n    }\n    .md-button {\n        border-radius: 10px !important;\n    }*/\n\n\n    /*Dropdown menu*/\n    /*.nr-dashboard-theme md-select-menu{\n        background-color: rgba(0,0,0,1) !important;\n    }\n    .nr-dashboard-theme md-select-menu, .nr-dashboard-theme md-select-menu md-option {\n        background-color: transparent !important;\n    }\n    .nr-dashboard-theme .md-select-menu-container {\n        border-radius: 10px !important;\n        border: none !important;\n    }\n    .nr-dashboard-theme md-select-menu md-option[selected] {\n        color: white !important;\n        background-color: #1a3566 !important;\n    }\n*/\n    /*Template*/\n    md-card>img, md-card>md-card-header img, md-card md-card-title-media img {\n        border-radius: 10px !important;\n    }\n\n    /* Color picker text BG */\n    .nr-dashboard-theme .color-picker-input-wrapper > input {\n        color: white !important;\n        background-color: transparent !important;\n    }\n\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1430,
+        "y": 1430,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9e32f98446c2c025",
+        "type": "http request",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://apiadvisor.climatempo.com.br/api/v1/weather/locale/3821/current?token=5136d2245d74a2b6346af50b97783892",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 2010,
+        "wires": [
+            [
+                "ad41e4a18824d12d",
+                "4fa124a591dc5d44",
+                "a35b222165ca56d5",
+                "c855ee44fd33bc97"
+            ]
+        ]
+    },
+    {
+        "id": "b9f89d741b8df63b",
+        "type": "inject",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 2010,
+        "wires": [
+            [
+                "9e32f98446c2c025"
+            ]
+        ]
+    },
+    {
+        "id": "ad41e4a18824d12d",
+        "type": "debug",
+        "z": "2b0662ebd4b08307",
+        "name": "debug_clima",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.data",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 1950,
+        "wires": []
+    },
+    {
+        "id": "77c08c742e4741e8",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "separa_campos",
+        "func": "var temperature = { payload: msg.payload.data.temperature };\n\nglobal.set(\"temperature\", msg.payload.data.temperature);\n\nreturn [temperature];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 1890,
+        "wires": [
+            [
+                "0c3c4223e27cc85a",
+                "32a4162d7cc93a27",
+                "5bb076f64b56c948"
+            ]
+        ]
+    },
+    {
+        "id": "0c3c4223e27cc85a",
+        "type": "ui_gauge",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "group": "bf61dfe3fe574ede",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "compass",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{msg.payload | number: 1}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#fbff00",
+            "#04ff00",
+            "#ff0000"
+        ],
+        "seg1": "11",
+        "seg2": "33",
+        "diff": false,
+        "className": "custom-widget",
+        "x": 1060,
+        "y": 1890,
+        "wires": []
+    },
+    {
+        "id": "4fa124a591dc5d44",
+        "type": "json",
+        "z": "2b0662ebd4b08307",
+        "name": "converter",
+        "property": "payload.data.temperature",
+        "action": "str",
+        "pretty": false,
+        "x": 610,
+        "y": 1890,
+        "wires": [
+            [
+                "77c08c742e4741e8"
+            ]
+        ]
+    },
+    {
+        "id": "d8df908f1c2add8a",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "separa_campos",
+        "func": "var humidity = {payload: msg.payload.data.humidity};\n\n\nglobal.set (\"humidity\" , msg.payload.data.humidity);\n\nreturn [humidity];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 2050,
+        "wires": [
+            [
+                "79fc623705c91272"
+            ]
+        ]
+    },
+    {
+        "id": "a35b222165ca56d5",
+        "type": "json",
+        "z": "2b0662ebd4b08307",
+        "name": "converter",
+        "property": "payload.data.humidity",
+        "action": "str",
+        "pretty": false,
+        "x": 650,
+        "y": 2050,
+        "wires": [
+            [
+                "d8df908f1c2add8a"
+            ]
+        ]
+    },
+    {
+        "id": "79fc623705c91272",
+        "type": "ui_gauge",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "group": "bf61dfe3fe574ede",
+        "order": 7,
+        "width": 4,
+        "height": 3,
+        "gtype": "compass",
+        "title": "Umidade",
+        "label": "%",
+        "format": "{{msg.payload | number: 1}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#fbff00",
+            "#04ff00",
+            "#ff0000"
+        ],
+        "seg1": "11",
+        "seg2": "33",
+        "diff": false,
+        "className": "",
+        "x": 1070,
+        "y": 2050,
+        "wires": []
+    },
+    {
+        "id": "2850c6ecb6144a21",
+        "type": "function",
+        "z": "2b0662ebd4b08307",
+        "name": "separa_campos",
+        "func": "var condition = {payload: msg.payload.data.condition};\n\n\nglobal.set (\"condition\" , msg.payload.data.condition);\n\nreturn [condition];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 2170,
+        "wires": [
+            [
+                "3ccd83b6df0b0706"
+            ]
+        ]
+    },
+    {
+        "id": "3ccd83b6df0b0706",
+        "type": "ui_text",
+        "z": "2b0662ebd4b08307",
+        "group": "bf61dfe3fe574ede",
+        "order": 12,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Condição",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1070,
+        "y": 2170,
+        "wires": []
+    },
+    {
+        "id": "f364dc79b903d042",
+        "type": "comment",
+        "z": "2b0662ebd4b08307",
+        "name": "API DO CLIMA EM ITAJOBI",
+        "info": "",
+        "x": 870,
+        "y": 1850,
+        "wires": []
+    },
+    {
+        "id": "32a4162d7cc93a27",
+        "type": "ui_chart",
+        "z": "2b0662ebd4b08307",
+        "name": "",
+        "group": "bf61dfe3fe574ede",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Gráfico Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 1930,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c855ee44fd33bc97",
+        "type": "json",
+        "z": "2b0662ebd4b08307",
+        "name": "converter",
+        "property": "payload.data.condition",
+        "action": "str",
+        "pretty": false,
+        "x": 630,
+        "y": 2170,
+        "wires": [
+            [
+                "2850c6ecb6144a21"
+            ]
+        ]
+    },
+    {
+        "id": "5bb076f64b56c948",
+        "type": "ui_text",
+        "z": "2b0662ebd4b08307",
+        "group": "bf61dfe3fe574ede",
+        "order": 1,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Temperature:",
+        "format": "{{msg.payload}} °C ",
+        "layout": "row-center",
+        "className": "",
+        "x": 1080,
+        "y": 1970,
+        "wires": []
+    },
+    {
+        "id": "e979bb67527573ec",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "bf61dfe3fe574ede",
+        "name": "Condition[0]",
+        "order": 1,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1050,
+        "y": 2090,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37d46adf594a0734",
+        "type": "ui_template",
+        "z": "2b0662ebd4b08307",
+        "group": "bf61dfe3fe574ede",
+        "name": "CSS Clima",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n\n    /*Main background*/\n    body {\n        background: -webkit-linear-gradient(\n            55deg,\n            #21363b 0%,\n            #46737d 50%,\n            #6db2c2 100%\n            );\n    }\n\n    /*Top bar*/\n    body.nr-dashboard-theme md-toolbar,\n    body.nr-dashboard-theme md-content md-card {\n        background-color: transparent !important;\n        color: #FFFFFF !important;\n    }\n\n\n    /*Left menu*/\n    /*Sidebar*/\n    body.nr-dashboard-theme md-sidenav {\n        color: white !important;\n        background-color: rgba(0,0,0,0) !important;\n    }\n    /*Hover selection*/\n    a.md-no-style, button.md-no-style {\n        border-radius: 10px !important;\n    }\n    /*Selected*/\n    .nr-menu-item-active div button {\n        border-right: 4px solid rgb(41 98 255) !important;\n    }\n    /*List*/\n    body.nr-dashboard-theme md-sidenav div.md-list-item-inner {\n        color: white !important;\n        background-color: rgba(40,85,165,1) !important;\n        border-radius: 10px !important;\n    }\n\n\n    /*Groups*/\n    ui-card-panel {\n        background-color: rgba(255,255,255,0.1) !important;\n        border-radius: 10px !important;\n    }\n    .nr-dashboard-theme ui-card-panel {\n        border: none !important;\n    }\n    /*Name groups*/\n    .nr-dashboard-theme ui-card-panel p.nr-dashboard-cardtitle {\n        color: rgba(255, 255, 255, 0.5) !important;\n    }\n\n\n    /*Bouttons*/\n  /*  .nr-dashboard-theme .nr-dashboard-button .md-button {\n        background-color: rgba(255,255,255,.1) !important;\n    }\n    .md-button {\n        border-radius: 10px !important;\n    }\n*/\n\n    /*Dropdown menu*/\n  /*  .nr-dashboard-theme md-select-menu{\n        background-color: rgba(0,0,0,1) !important;\n    }\n    .nr-dashboard-theme md-select-menu, .nr-dashboard-theme md-select-menu md-option {\n        background-color: transparent !important;\n    }\n    .nr-dashboard-theme .md-select-menu-container {\n        border-radius: 10px !important;\n        border: none !important;\n    }\n    .nr-dashboard-theme md-select-menu md-option[selected] {\n        color: white !important;\n        background-color: #1a3566 !important;\n    }\n*/\n    /*Template*/\n    md-card>img, md-card>md-card-header img, md-card md-card-title-media img {\n        border-radius: 10px !important;\n    }\n\n    /* Color picker text BG */\n    .nr-dashboard-theme .color-picker-input-wrapper > input {\n        color: white !important;\n        background-color: transparent !important;\n    }\n\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1380,
+        "y": 2090,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "12fbce7f.2b7102",
+        "type": "inject",
+        "z": "e6740623.b934e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "42df60a0.94fae",
+                "53554bd89e7ad45b"
+            ]
+        ]
+    },
+    {
+        "id": "d339a836.e035e8",
+        "type": "mqtt out",
+        "z": "e6740623.b934e8",
+        "name": "mqtt-pub",
+        "topic": "SCS/weather/itajobiAtual",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c2b70b0fcb50f7b6",
+        "x": 640,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "6c8a85c9.17757c",
+        "type": "mqtt in",
+        "z": "e6740623.b934e8",
+        "name": "mqtt-sub",
+        "topic": "SCS/weather/itajobiAtual",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "c2b70b0fcb50f7b6",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "cfb548a3.79a148",
+                "f1985d9d86d47f03"
+            ]
+        ]
+    },
+    {
+        "id": "8c6c3e96.50c9a",
+        "type": "debug",
+        "z": "e6740623.b934e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "cfb548a3.79a148",
+        "type": "function",
+        "z": "e6740623.b934e8",
+        "name": "Current conditions ",
+        "func": "//* Function for Time Conversions *\n\nfunction timeConverter(UNIX_timestamp){\n    var a = new Date(UNIX_timestamp * 1000);\n    var hour = a.getHours();\n        if (hour < 10) {hour = \"0\" + hour;}\n    var min = a.getMinutes();\n        if (min < 10) {min = \"0\" + min;}\n    var time = hour + ':' + min;\nreturn time;}\n\nvar cond_icon = \"wi wi-owm-\" + msg.payload.weather[0].icon;\nvar temperature = msg.payload.tempc;\nvar cond_descr = msg.payload.weather[0].description;\nvar windSpeed = msg.payload.windspeed; \nvar windDeg = \"fa fa-location-arrow wi-rotate-\" + msg.payload.winddirection; \n//var humidity = msg.payload.humidity;\nvar sunRise = timeConverter(msg.payload.sunrise);\nvar sunSet = timeConverter(msg.payload.sunset);\nreturn [{payload: [cond_icon, cond_descr]},{payload: temperature},{payload: windSpeed},{payload: windDeg},/*{payload: humidity},*/ {payload: sunRise}, {payload: sunSet}];",
+        "outputs": 7,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "c53001de.0ef6c"
+            ],
+            [
+                "9ed11acb.14f538"
+            ],
+            [
+                "923cbe89.e4efc"
+            ],
+            [
+                "31f0ac0e.67a994"
+            ],
+            [
+                "d02d770e.af18a8"
+            ],
+            [
+                "c44e6be2.f1a4c8"
+            ],
+            [
+                "c8552d66.a201c"
+            ]
+        ]
+    },
+    {
+        "id": "d02d770e.af18a8",
+        "type": "ui_text",
+        "z": "e6740623.b934e8",
+        "group": "14a6b45.c14044c",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Humidity:",
+        "format": "{{msg.payload}} %",
+        "layout": "row-center",
+        "x": 660,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "9ed11acb.14f538",
+        "type": "ui_text",
+        "z": "e6740623.b934e8",
+        "group": "14a6b45.c14044c",
+        "order": 1,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Temperature:",
+        "format": "{{msg.payload}} °C ",
+        "layout": "row-center",
+        "x": 630,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "923cbe89.e4efc",
+        "type": "ui_text",
+        "z": "e6740623.b934e8",
+        "group": "afe05275.58d41",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "name": "Wind speed ",
+        "label": "<i class=\"wi wi-darksky-wind\"/>",
+        "format": "{{msg.payload}} m/s",
+        "layout": "row-center",
+        "x": 610,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "31f0ac0e.67a994",
+        "type": "function",
+        "z": "e6740623.b934e8",
+        "name": "Wind direction ",
+        "func": "var deg = msg.payload;\nvar degIcon = \"fa fa-location-arrow wi-rotate-\"+deg;\n\nif (deg>11.25 && deg<=78.75){\n    return {payload: [degIcon, \"north-east\"]};\n}else if (deg>78.75 && deg<=101.25){\n    return {payload: [degIcon, \"east\"]};\n}else if (deg>101.25 && deg<=168.75){\n    return {payload: [degIcon, \"south-east\"]};\n}else if (deg>168.75 && deg<=191.25){\n    return {payload: [degIcon, \"south\"]};\n}else if (deg>191.25 && deg<=258.75){\n    return {payload: [degIcon, \"south-west\"]};\n}else if (deg>258.75 && deg<=281.25){\n    return {payload: [degIcon, \"west\"]};\n}else if (deg>281.25 && deg<=348.75){\n    return {payload: [degIcon, \"north-west\"]};\n}else{\n    return {payload: [degIcon, \"north\"]};\n}\n    ",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            [
+                "c243aa36.ffcd28"
+            ]
+        ]
+    },
+    {
+        "id": "c243aa36.ffcd28",
+        "type": "ui_text",
+        "z": "e6740623.b934e8",
+        "group": "afe05275.58d41",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "name": "Wind direction ",
+        "label": "<i class=\"{{msg.payload[0]}}\"/>",
+        "format": "{{msg.payload[1]}}",
+        "layout": "row-center",
+        "x": 800,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c53001de.0ef6c",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "8e91688a.1a1588",
+        "name": "Condition ",
+        "order": 2,
+        "width": 3,
+        "height": 2,
+        "format": "<div justify-content=\"center\"><i class=\"{{msg.payload[0]}} wi-4x\"></i></div>\n<div justify-content=\"center\">{{msg.payload[1]}}</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 580,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c44e6be2.f1a4c8",
+        "type": "ui_text",
+        "z": "e6740623.b934e8",
+        "group": "b363e4ec.0c1bb8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Sunrise",
+        "label": "<i class=\"wi wi-owm-01d\"/> <i class=\"wi wi-arrow wi-rotate-180\"></i> ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 660,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c8552d66.a201c",
+        "type": "ui_text",
+        "z": "e6740623.b934e8",
+        "group": "b363e4ec.0c1bb8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Sunset",
+        "label": "<i class=\"wi wi-owm-01d\"/> <i class=\"wi wi-arrow\"/>",
+        "format": " {{msg.payload}}",
+        "layout": "row-center",
+        "x": 660,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "1322f8e7.e95597",
+        "type": "debug",
+        "z": "e6740623.b934e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "c1b756d5.9e9458",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[0]",
+        "order": 1,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 850,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "649795a1.93229c",
+        "type": "function",
+        "z": "e6740623.b934e8",
+        "name": "Forecast",
+        "func": "//* Function for Date Conversions *\n\nfunction timeConverter(UNIX_timestamp){\n    var a = new Date(UNIX_timestamp * 1000);\n    var days = [\"Dom\", \"Seg\", \"Ter\", \"Qua\", \"Qui\", \"Sex\", \"Sab\"];\n    var day = days[a.getDay()];\n    var date = a.getDate();\n        if(date <= 9){\n            date = \"0\" + date;\n        }\n    var month = (a.getMonth() + 1);\n    if(month <= 8){\n        month = \"0\"+ month;\n    }\n    var time = day + \" \" + date + '/' + month;\nreturn time;}\n\nvar cond_icon;\nvar temperature;\nvar date;\nvar object = [];\n\nfor (i=1; i<=7; i++){\n    cond_icon = \"wi wi-owm-\" + msg.payload.daily[i].weather[0].icon;\n    temperature = msg.payload.daily[i].temp.day;\n    date = timeConverter(msg.payload.daily[i].dt)\n    object[i-1] = [date, cond_icon, temperature];\n}\nreturn [{payload: object[0]},\n        {payload: object[1]},\n        {payload: object[2]},\n        {payload: object[3]},\n        {payload: object[4]},\n        {payload: object[5]},\n        {payload: object[6]}];",
+        "outputs": 7,
+        "noerr": 8,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 900,
+        "wires": [
+            [
+                "c1b756d5.9e9458"
+            ],
+            [
+                "600914f2.f2d48c"
+            ],
+            [
+                "2e2a1f53.e7dba"
+            ],
+            [
+                "960eadb0.c4f36"
+            ],
+            [
+                "6a6d4da5.28d994"
+            ],
+            [
+                "f7f15a17.2d96f8"
+            ],
+            [
+                "6a9f6d46.b0de14",
+                "1322f8e7.e95597"
+            ]
+        ]
+    },
+    {
+        "id": "600914f2.f2d48c",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[1]",
+        "order": 2,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 850,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e2a1f53.e7dba",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[2]",
+        "order": 3,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 850,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "960eadb0.c4f36",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[3]",
+        "order": 5,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 850,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6a6d4da5.28d994",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[4]",
+        "order": 4,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 850,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f7f15a17.2d96f8",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[5]",
+        "order": 6,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 850,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6a9f6d46.b0de14",
+        "type": "ui_template",
+        "z": "e6740623.b934e8",
+        "group": "2c3113b6.ecfa0c",
+        "name": "Condition[6]",
+        "order": 7,
+        "width": 2,
+        "height": 2,
+        "format": "<div style=\"justify-content: center;\">\n    {{msg.payload[0]}} \n</div>\n<div style=\"justify-content: center; padding-bottom: 10px\">\n    <i class=\"{{msg.payload[1]}} wi-2x\"></i>\n</div>\n<div style=\"justify-content: center;\">\n    {{msg.payload[2]}} °C\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 850,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "42df60a0.94fae",
+        "type": "openweathermap",
+        "z": "e6740623.b934e8",
+        "name": "Current Itajobi",
+        "wtype": "current",
+        "lon": "-49.0561",
+        "lat": "-21.3161",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "8c6c3e96.50c9a",
+                "d339a836.e035e8"
+            ]
+        ]
+    },
+    {
+        "id": "f1985d9d86d47f03",
+        "type": "debug",
+        "z": "e6740623.b934e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 200,
+        "y": 510,
+        "wires": []
+    },
+    {
+        "id": "53554bd89e7ad45b",
+        "type": "openweathermap",
+        "z": "e6740623.b934e8",
+        "name": "Forecast Itajobi",
+        "wtype": "forecast",
+        "lon": "-49.0561",
+        "lat": "-21.3161",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "x": 230,
+        "y": 740,
+        "wires": [
+            [
+                "5e2ddb89a58073b8"
+            ]
+        ]
+    },
+    {
+        "id": "5e2ddb89a58073b8",
+        "type": "mqtt out",
+        "z": "e6740623.b934e8",
+        "name": "mqtt-pub",
+        "topic": "SCS/weather/itajobiProx",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c2b70b0fcb50f7b6",
+        "x": 430,
+        "y": 770,
+        "wires": []
+    },
+    {
+        "id": "5639088cdf708837",
+        "type": "mqtt in",
+        "z": "e6740623.b934e8",
+        "name": "mqtt-sub",
+        "topic": "SCS/weather/itajobiProx",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "c2b70b0fcb50f7b6",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 270,
+        "y": 880,
+        "wires": [
+            [
+                "649795a1.93229c"
+            ]
+        ]
+    }
+]
